@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>GBA Extended | Game Boy Advance Game Vault</title>
+  <title>GBA Extended</title>
   <style>
     * {
       margin: 0;
@@ -18,7 +18,6 @@
       padding: 2rem 1.5rem;
     }
 
-    /* Header */
     .header {
       text-align: center;
       margin-bottom: 2rem;
@@ -58,7 +57,6 @@
       filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
     }
 
-    /* Search bar */
     .toolbar {
       display: flex;
       flex-wrap: wrap;
@@ -111,7 +109,6 @@
       margin: 0 4px;
     }
 
-    /* Section headers */
     .section-header {
       margin: 2rem 0 1rem 0;
       padding-bottom: 0.5rem;
@@ -125,16 +122,10 @@
       font-size: 1.3rem;
       font-weight: 600;
     }
-    .section-header h3 {
-      color: #ffcc88;
-      font-size: 1.1rem;
-      font-weight: 500;
-    }
     .section-header span {
       font-size: 1.5rem;
     }
 
-    /* Games grid */
     .games-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -143,7 +134,6 @@
       margin: 0 auto;
     }
 
-    /* Game card (button style) */
     .game-card {
       display: flex;
       align-items: center;
@@ -216,7 +206,6 @@
       color: #ffcc66;
     }
 
-    /* Wiki link */
     .wiki-link {
       text-align: center;
       margin: 2rem 0 1rem;
@@ -245,7 +234,6 @@
       vertical-align: middle;
     }
 
-    /* Footer */
     .footer {
       text-align: center;
       margin-top: 2.5rem;
@@ -255,7 +243,6 @@
       padding-top: 1.5rem;
     }
 
-    /* No results */
     .no-results {
       text-align: center;
       grid-column: 1 / -1;
@@ -279,12 +266,8 @@
 
 <div class="header">
   <h1>🎮 GBA EXTENDED</h1>
-  <p>Game Boy Advance — the ultimate GBA game vault with enhanced visuals</p>
+  <p>Extra GBA games not found in the main vault</p>
   <div class="badge-row">
-    <div class="badge">🎮 100+ Games</div>
-    <div class="badge">⚡ Instant Launch</div>
-    <div class="badge">💾 Save States</div>
-    <div class="badge">🎮 Gamepad Ready</div>
   </div>
   <img src="Binaries/gba.png" alt="GBA Logo" class="gba-logo" onerror="this.style.display='none'">
 </div>
@@ -292,35 +275,34 @@
 <div class="toolbar">
   <div class="search-box">
     <span>🔍</span>
-    <input type="text" id="searchInput" placeholder="search game... (Mario, Zelda, Pokemon)">
+    <input type="text" id="searchInput" placeholder="search exclusive games...">
   </div>
   <div class="stats-badge">
-    📚 <span id="totalCount">0</span> games
+    📚 <span id="totalCount">0</span> exclusive games
   </div>
 </div>
 
-<!-- GBA Games Section -->
+<!-- GBA Exclusive Games Section -->
 <div class="section-header">
   <span>🎮</span>
-  <h2>Game Boy Advance</h2>
+  <h2>GBA Exclusive Games</h2>
 </div>
 <div id="gbaContainer" class="games-grid"></div>
 
 <!-- Gameboy Collections Section -->
 <div class="section-header">
   <span>🌸</span>
-  <h2>Gameboy Game Collections</h2>
+  <h2>Gameboy / Color Collections</h2>
 </div>
 <div id="gbcContainer" class="games-grid"></div>
 
 <!-- NES Collections Section -->
 <div class="section-header">
   <span>📺</span>
-  <h2>NES Game Collections</h2>
+  <h2>NES Collections</h2>
 </div>
 <div id="nesContainer" class="games-grid"></div>
 
-<!-- Wiki Link -->
 <div class="wiki-link">
   <a href="https://github.com/Browncha023/GBA/wiki" target="_blank">
     <span>📖</span> For Info On: Game Collections, Controls, And Some Other Cool Stuff. Check Out The Wiki!
@@ -329,65 +311,40 @@
 </div>
 
 <div class="footer">
-  <span>⚡ GBA Extended • Powered by GBA Emulator • Click any game to play</span>
+  <span>⚡ GBA Extended • Exclusive games not in the main vault • Click any game to play</span>
 </div>
 
 <script>
   // ============================================================
-  // COMPLETE GAME DATABASE from your original list
+  // EXCLUSIVE GAMES - ONLY games NOT in the old file (no duplicates)
   // ============================================================
   
-  // GBA Games (main list)
+  // GBA Exclusive Games (from your list that don't appear in the old file)
   const gbaGames = [
     "Advance Wars", "Advance Wars 2", "Aladdin", "Atari Anniversary Advance",
-    "Bomberman Max 2 - Blue Advance", "Bomberman Tournament", "Bubble Bobble: Old and New",
     "Crash Bandicoot - The Huge Adventure", "Crash Bandicoot - Purple Riptos Rampage",
     "Crash Bandicoot 2 - N-Tranced", "Crash Nitro Kart",
-    "Croket! - Yume no Banker Survival!", "Croket! 2 - Yami no Bank to Banqueen",
-    "Croket! 3 - Granu Oukoku no Nazo", "Croket! 4 - Bank no Mori no Mamorigami",
-    "Digimon Racing", "DK - King Of Swing", "Donkey Kong Country", "Donkey Kong Country 2",
-    "Donkey Kong Country 3", "Doom", "Doom 2", "Dragon Ball Z - Supersonic Warriors",
-    "Drill Dozer", "Final Fantasy IV Advance (Sound Restoration Mod)", "Final Fantasy VI Advance",
-    "Final Fantasy Tactics Advance", "Fire Emblem", "Frogger Advance - The Great Quest",
-    "Frogger's Adventures - Temple of the Frog", "Frogger's Adventures 2 - The Lost Wand",
-    "F-Zero - GP Legend", "F-Zero - Maximum Velocity", "Game & Watch Gallery 4",
-    "Golden Sun", "Grand Theft Auto Advance", "Gunstar Super Heroes",
-    "Hamtaro - Ham-Ham Heartbreak", "Harvest Moon - Friends Of Mineral Town",
-    "Harvest Moon - More Friends Of Mineral Town", "Iridion 3D", "Kirby & The Amazing Mirror",
-    "Kirby: Nightmare in Dreamland", "Mario & Luigi: Superstar Saga", "Mario Kart: Super Circuit",
-    "Mario Party Advance", "Mario Pinball Land", "Mario V.S. Donkey Kong",
-    "Megaman & Bass", "Megaman Battle Network 1", "Megaman Battle Network 2",
-    "Megaman Battle Network 3 Blue", "Megaman Battle Network 4 Blue Moon",
-    "Megaman Battle Network 4 Red Sun", "Megaman Battle Network 5 Team Protoman",
-    "Megaman Battle Network 6 Cybeast Falzar", "Megaman Zero", "Megaman Zero 2",
-    "Megaman Zero 3", "Megaman Zero 4", "Metal Slug Advance", "Metroid Fusion",
-    "Metroid Zero Mission", "Momotarou Dentetsu G Gold Deck wo Tsukure!", "Monopoly",
-    "Monster Force", "Mortal Kombat Advance", "Need For Speed - Underground",
-    "Need For Speed - Underground 2", "One Piece", "Pacman World", "Pacman World 2",
-    "Pokemon Emerald", "Pokemon Emerald (Kaizo Mod)", "Pokemon Emerald (Party Randomizer Plus Mod)",
-    "Pokemon Leaf Green", "Pokemon Fire Red", "Pokemon Light Platinum (Ruby Mod)",
-    "Pokemon Mystery Dungeon Red", "Pokemon Ruby", "Pokemon Sapphire",
-    "Pokemon Pinball - Ruby & Sapphire", "Pokemon Video Show Pak 1", "Pokemon Video Show Pak 2",
-    "Pokemon Video Show Pak 3", "Pokemon Video Show Pak 4", "Puyo Pop", "Puyo Pop Fever",
-    "Rayman 3 - Hoodlum Havoc", "Sonic Advance", "Sonic Advance 2", "Sonic Advance 3",
-    "Sonic Battle", "Sonic Pinball", "Sonic The Hedgehog - Genesis", "Spyro Adventure",
-    "Spyro: Season of Ice", "Spyro 2: Season of Flame", "Super Mario Advance",
-    "Super Mario Advance 2", "Super Mario Advance 3", "Super Mario Advance 4",
-    "Super Mario Advance 4 (Wii U Version)", "Super Monkey Ball Jr",
-    "Super Street Fighter II: Turbo Revival", "Super Street Fighter III: Alpha",
-    "Tales of Phantasia", "Tak 2: The Staff of Dreams", "Teenage Mutant Ninja Turtles",
-    "Tetris Worlds", "The Sims: Bustin' Out", "The Sims 2", "The Simpsons: Road Rage",
-    "Tony Hawk's Pro Skater 2", "Turok Evolution", "Ty the Tasmanian Tiger 2 - Bush Rescue",
-    "Ty the Tasmanian Tiger 3 - Night of the Quinkan", "Wario Land 4", "Wario Ware Inc",
-    "The Legend of Zelda: A Link to the Past", "The Legend of Zelda: The Minish Cap"
+    "Croket! 4 - Bank no Mori no Mamorigami",
+    "DK - King Of Swing", "Donkey Kong Country 2", "Donkey Kong Country 3",
+    "Doom", "Doom 2", "Dragon Ball Z - Supersonic Warriors",
+    "Grand Theft Auto Advance",
+    "Harvest Moon - Friends Of Mineral Town", "Harvest Moon - More Friends Of Mineral Town",
+    "Iridion 3D", "Metal Slug Advance", "Metroid Zero Mission",
+    "Need For Speed - Underground", "Need For Speed - Underground 2", "One Piece",
+    "Pokemon Emerald (Kaizo Mod)", "Pokemon Emerald (Party Randomizer Plus Mod)",
+    "Pokemon Light Platinum (Ruby Mod)", "Pokemon Pinball - Ruby & Sapphire",
+    "Puyo Pop", "Puyo Pop Fever", "Rayman 3 - Hoodlum Havoc",
+    "Sonic The Hedgehog - Genesis", "Super Mario Advance 4 (Wii U Version)",
+    "The Sims 2", "Tony Hawk's Pro Skater 2",
+    "Ty the Tasmanian Tiger 2 - Bush Rescue", "Ty the Tasmanian Tiger 3 - Night of the Quinkan"
   ];
 
-  // Gameboy Collections
+  // Gameboy Collections (not in old file)
   const gbcGames = [
     "The Pokemon Collection", "The Mario Land Collection"
   ];
 
-  // NES Collections
+  // NES Collections (not in old file)
   const nesGames = [
     "NES Greatest Hits 1"
   ];
@@ -400,7 +357,6 @@
       .replace(/[^a-z0-9_]/g, '')
       .replace(/_+/g, '_');
     
-    // Special mappings for exact matches from your original list
     const specialMappings = {
       "advance_wars": "advancewars",
       "advance_wars_2": "advancewars2",
@@ -409,106 +365,35 @@
       "crash_bandicoot_-_purple_riptos_rampage": "cbprr",
       "crash_bandicoot_2_-_n-tranced": "cb2",
       "crash_nitro_kart": "cnk",
+      "croket_4_-_bank_no_mori_no_mamorigami": "croket4",
       "dk_-_king_of_swing": "dkkos",
-      "donkey_kong_country": "dkc",
       "donkey_kong_country_2": "dkc2",
       "donkey_kong_country_3": "dkc3",
       "doom": "dm",
       "doom_2": "dm2",
       "dragon_ball_z_-_supersonic_warriors": "dbz_supersonic",
-      "final_fantasy_iv_advance_(sound_restoration_mod)": "ff4S",
-      "final_fantasy_vi_advance": "ff6",
-      "final_fantasy_tactics_advance": "final_fantasy_tactics",
-      "fire_emblem": "fire_emblem",
-      "frogger_advance_-_the_great_quest": "frogger1",
-      "frogger's_adventures_-_temple_of_the_frog": "frogger2",
-      "frogger's_adventures_2_-_the_lost_wand": "frogger3",
-      "f-zero_-_gp_legend": "fzero_gp",
-      "f-zero_-_maximum_velocity": "fzero_max",
-      "game_&_watch_gallery_4": "gamewatch4",
-      "golden_sun": "goldensun",
       "grand_theft_auto_advance": "gta",
-      "gunstar_super_heroes": "gunstar_super_heroes",
-      "hamtaro_-_ham-heartbreak": "hamtaro_heartbreak",
       "harvest_moon_-_friends_of_mineral_town": "hmfmt",
       "harvest_moon_-_more_friends_of_mineral_town": "hmmfmt",
       "iridion_3d": "iridion",
-      "kirby_&_the_amazing_mirror": "kirbymirror",
-      "kirby:_nightmare_in_dreamland": "kirbynightmare",
-      "mario_&_luigi:_superstar_saga": "superstar",
-      "mario_kart:_super_circuit": "mariokart",
-      "mario_party_advance": "marioparty",
-      "mario_pinball_land": "mariopinball",
-      "mario_v.s._donkey_kong": "mvsdk",
-      "megaman_&_bass": "megamanbass",
-      "megaman_battle_network_1": "megaman_battle1",
-      "megaman_battle_network_2": "megaman_battle2",
-      "megaman_battle_network_3_blue": "megaman_battle3_blue",
-      "megaman_battle_network_4_blue_moon": "megaman_battle4_blue",
-      "megaman_battle_network_4_red_sun": "megaman_battle4_red",
-      "megaman_battle_network_5_team_protoman": "megaman_battle5",
-      "megaman_battle_network_6_cybeast_falzar": "megaman_battle6",
-      "megaman_zero": "megaman_zero1",
-      "megaman_zero_2": "megaman_zero2",
-      "megaman_zero_3": "megaman_zero3",
-      "megaman_zero_4": "megaman_zero4",
       "metal_slug_advance": "metalslug",
-      "metroid_fusion": "metroid_fusion",
       "metroid_zero_mission": "mzm",
       "need_for_speed_-_underground": "nfsu",
       "need_for_speed_-_underground_2": "nfsu2",
       "one_piece": "onepiece",
-      "pacman_world": "pacman_world",
-      "pacman_world_2": "pacman_world2",
-      "pokemon_emerald": "pokemonemerald",
       "pokemon_emerald_(kaizo_mod)": "pokemonek",
       "pokemon_emerald_(party_randomizer_plus_mod)": "eprp",
-      "pokemon_leaf_green": "pokemongreen",
-      "pokemon_fire_red": "pokemonred",
       "pokemon_light_platinum_(ruby_mod)": "pokemonlp",
-      "pokemon_mystery_dungeon_red": "mysteryred",
-      "pokemon_ruby": "pokemonruby",
-      "pokemon_sapphire": "pokemonsapphire",
       "pokemon_pinball_-_ruby_&_sapphire": "pprs",
-      "pokemon_video_show_pak_1": "gba_video_pokemon_1",
-      "pokemon_video_show_pak_2": "gba_video_pokemon_2",
-      "pokemon_video_show_pak_3": "gba_video_pokemon_3",
-      "pokemon_video_show_pak_4": "gba_video_pokemon_4",
       "puyo_pop": "puyopop",
       "puyo_pop_fever": "ppf",
       "rayman_3_-_hoodlum_havoc": "r3hh",
-      "sonic_advance": "sonic_advance",
-      "sonic_advance_2": "sonic_advance2",
-      "sonic_advance_3": "sonic_advance3",
-      "sonic_battle": "sonicbattle",
-      "sonic_pinball": "sonicpinball",
       "sonic_the_hedgehog_-_genesis": "sthg",
-      "spyro_adventure": "spyro_adventure",
-      "spyro:_season_of_ice": "spyro_ice",
-      "spyro_2:_season_of_flame": "spyro_flame",
-      "super_mario_advance": "supermarioadvance",
-      "super_mario_advance_2": "supermarioadvance2",
-      "super_mario_advance_3": "supermarioadvance3",
-      "super_mario_advance_4": "supermarioadvance4",
       "super_mario_advance_4_(wii_u_version)": "sma4+",
-      "super_monkey_ball_jr": "supermonkeyballjr",
-      "super_street_fighter_ii:_turbo_revival": "super_street_fighter_2_turbo_revival",
-      "super_street_fighter_iii:_alpha": "super_street_fighter_3_alpha",
-      "tales_of_phantasia": "tales_of_phantasia",
-      "tak_2:_the_staff_of_dreams": "tak2_staff_of_dreams",
-      "teenage_mutant_ninja_turtles": "tmnt",
-      "tetris_worlds": "tetris_worlds",
-      "the_sims:_bustin'_out": "sims_bustin_out",
       "the_sims_2": "sims2",
-      "the_simpsons:_road_rage": "simpsons",
       "tony_hawk's_pro_skater_2": "thps2",
-      "turok_evolution": "turok_evolution",
       "ty_the_tasmanian_tiger_2_-_bush_rescue": "ty2",
       "ty_the_tasmanian_tiger_3_-_night_of_the_quinkan": "ty3",
-      "warioland_4": "warioland4",
-      "wario_ware_inc": "wario_ware",
-      "the_legend_of_zelda:_a_link_to_the_past": "zelda_past",
-      "the_legend_of_zelda:_the_minish_cap": "zelda_minish",
       "the_pokemon_collection": "pokemongb",
       "the_mario_land_collection": "marioland",
       "nes_greatest_hits_1": "nesgh1"
@@ -517,24 +402,31 @@
     return specialMappings[hash] || hash;
   }
 
-  // Get icon for game
   function getGameIcon(gameName) {
     if (gameName.includes("Pokemon")) return "⚡";
     if (gameName.includes("Mario")) return "🍄";
-    if (gameName.includes("Zelda")) return "🗡️";
-    if (gameName.includes("Kirby")) return "⭐";
+    if (gameName.includes("Crash")) return "🦊";
     if (gameName.includes("Donkey Kong")) return "🦍";
     if (gameName.includes("Sonic")) return "🦔";
     if (gameName.includes("Metroid")) return "🕷️";
     if (gameName.includes("Final Fantasy")) return "⚔️";
     if (gameName.includes("Megaman")) return "🤖";
-    if (gameName.includes("Crash")) return "🦊";
-    if (gameName.includes("Spyro")) return "🐲";
-    if (gameName.includes("Wario")) return "💰";
+    if (gameName.includes("Doom")) return "👹";
+    if (gameName.includes("Harvest Moon")) return "🌾";
+    if (gameName.includes("Need For Speed")) return "🏎️";
+    if (gameName.includes("Tony Hawk")) return "🛹";
     return "🎮";
   }
 
-  // Render function for any container
+  function escapeHtml(str) {
+    return str.replace(/[&<>]/g, function(m) {
+      if (m === '&') return '&amp;';
+      if (m === '<') return '&lt;';
+      if (m === '>') return '&gt;';
+      return m;
+    });
+  }
+
   function renderGames(containerId, gamesArray, searchTerm = "") {
     const container = document.getElementById(containerId);
     if (!container) return;
@@ -547,7 +439,7 @@
     }
     
     if (filtered.length === 0) {
-      container.innerHTML = `<div class="no-results">✨ no games found ✨</div>`;
+      container.innerHTML = `<div class="no-results">✨ no exclusive games found ✨</div>`;
       return;
     }
     
@@ -560,7 +452,7 @@
           <div class="game-info">
             <div class="game-title">
               ${escapeHtml(game)}
-              <span class="game-badge">GBA</span>
+              <span class="game-badge">EXCLUSIVE</span>
             </div>
             <div class="arrow-hint">▶ play now</div>
           </div>
@@ -569,16 +461,6 @@
     }).join('');
   }
   
-  function escapeHtml(str) {
-    return str.replace(/[&<>]/g, function(m) {
-      if (m === '&') return '&amp;';
-      if (m === '<') return '&lt;';
-      if (m === '>') return '&gt;';
-      return m;
-    });
-  }
-  
-  // Update all sections based on search
   let currentSearchTerm = "";
   
   function updateAllGames() {
@@ -594,7 +476,6 @@
     document.getElementById("totalCount").innerText = total;
   }
   
-  // Search input handler
   const searchInput = document.getElementById("searchInput");
   let debounceTimer;
   searchInput.addEventListener("input", (e) => {
@@ -605,7 +486,6 @@
     }, 250);
   });
   
-  // Initial render
   updateAllGames();
 </script>
 </body>
